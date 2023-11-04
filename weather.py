@@ -17,14 +17,23 @@ def format_temperature(temp):
 
 
 def convert_date(iso_string):
-    """Converts and ISO formatted date into a human readable format.
+    iso_date = datetime.fromisoformat(iso_string)
+
+                # Format the datetime object as a human-readable string
+    human_readable_date = iso_date.strftime("%A %d %B %Y")
+    return human_readable_date
+
+
+# human_readable_date = iso_to_human(iso_string)
+
+
+"""Converts and ISO formatted date into a human readable format.
 
     Args:
         iso_string: An ISO date string..
     Returns:
         A date formatted like: Weekday Date Month Year e.g. Tuesday 06 July 2021
     """
-    pass
 
 
 def convert_f_to_c(temp_in_farenheit):
@@ -35,10 +44,19 @@ def convert_f_to_c(temp_in_farenheit):
     Returns:
         A float representing a temperature in degrees celcius, rounded to 1dp.
     """
-    pass
-
+    celcius = (float(temp_in_farenheit) - 32) * 5/9
+    return round(celcius,1)
 
 def calculate_mean(weather_data):
+
+    total_sum = 0
+    for number in weather_data:
+        total_sum += float(number)
+
+    result = len(weather_data)
+    calculate_mean = total_sum/result
+    return float(calculate_mean)
+
     """Calculates the mean value from a list of numbers.
 
     Args:
