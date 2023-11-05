@@ -75,21 +75,47 @@ def load_data_from_csv(csv_file):
     Returns:
         A list of lists, where each sublist is a (non-empty) line in the csv file.
     """
-    pass
+    with open(csv_file, encoding="utf-8") as weather_data:
+       reader = csv.reader(weather_data)
+       next(reader)
+       csv_data = []
+       for data in reader:
+         if data != []:
+          sub_list = [data[0], float(data[1]), float(data[2])]
+          csv_data.append (sub_list)
 
+       return csv_data
+
+# my_list = [1, 2, 3, 2, 4, 3, 5, 6, 1]
+# duplicates = find_duplicate_positions(my_list)
+
+# for item, positions in duplicates.items():
+#     print(f"Item {item} is duplicated at positions {positions}")
 
 def find_min(weather_data):
-    """Calculates the minimum value in a list of numbers.
+    if weather_data == []:
+        return ()
+    min_value = min(weather_data)
+    index_list = []
+
+    for index,value in enumerate(weather_data):
+     if value == min_value:
+      index_list.append(index)
+
+    return float((min_value)), max(index_list)
+
+
+"""Calculates the minimum value in a list of numbers.
 
     Args:
         weather_data: A list of numbers.
     Returns:
         The minium value and it's position in the list. (In case of multiple matches, return the index of the *last* example in the list.)
     """
-    pass
 
 
 def find_max(weather_data):
+    
     """Calculates the maximum value in a list of numbers.
 
     Args:
@@ -97,7 +123,16 @@ def find_max(weather_data):
     Returns:
         The maximum value and it's position in the list. (In case of multiple matches, return the index of the *last* example in the list.)
     """
-    pass
+    if weather_data == []:
+        return ()
+    max_value = max(weather_data)
+    index_list = []
+
+    for index,value in enumerate(weather_data):
+     if value == max_value:
+      index_list.append(index)
+
+    return float((max_value)), max(index_list)
 
 
 def generate_summary(weather_data):
