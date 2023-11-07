@@ -155,13 +155,13 @@ def generate_summary(weather_data):
     # min_date = convert_date(date_list [min_position])
     # min_temp = format_temperature (convert_f_to_c (min_value))
     min_temp = format_temperature(convert_f_to_c(find_min(min_list)[0]))
-    min_date = convert_date(date_list[find_min(min_list[1])])
+    min_date = convert_date(date_list[find_min(min_list)[1]])
 
     max_temp = format_temperature(convert_f_to_c(find_max(max_list)[0]))
-    max_date = convert_date(date_list[find_max(max_list[1])])
+    max_date = convert_date(date_list[find_max(max_list)[1]])
 
-    ave_lowtemp = convert_f_to_c(calculate_mean(min_list))
-    ave_hightemp = convert_f_to_c(calculate_mean(max_list))
+    ave_lowtemp = format_temperature(convert_f_to_c(calculate_mean(min_list)))
+    ave_hightemp = format_temperature(convert_f_to_c(calculate_mean(max_list)))
 
 #     generate_summary = ""
 #     for items in weather_data: 
@@ -172,7 +172,7 @@ def generate_summary(weather_data):
 #      min_temp = format_temperature(convert_f_to_c (items[1]))
 #      max_temp = format_temperature(convert_f_to_c (items[2])) 
     generate_summary = (f"{count_items} Day Overview\n  The lowest temperature will be {min_temp}, and will occur on {min_date}.\n  The highest temperature will be {max_temp}, and will occur on {max_date}.\n  The average low this week is {ave_lowtemp}.\n  The average high this week is {ave_hightemp}.\n")
-
+    return generate_summary
 #     return daily_summary
     
 #     for index in range(len(weather_data)):
